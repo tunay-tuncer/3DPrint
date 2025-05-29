@@ -5,9 +5,9 @@ const Settings = () => {
     const { projectDetails, setProjectDetails } = useContext(ProjectContext);
 
     const [plateCount, setPlateCount] = useState(1);
-    const [filamentWeight, setFilamentWeight] = useState(0);
-    const [printingHour, setPrintingHour] = useState(0);
-    const [printingMinute, setPrintingMinute] = useState(0);
+    const [filamentWeight, setFilamentWeight] = useState("");
+    const [printingHour, setPrintingHour] = useState("");
+    const [printingMinute, setPrintingMinute] = useState("");
 
 
     const topSettings = [
@@ -84,7 +84,7 @@ const Settings = () => {
                     <li key={option.id}>
                         <p>{option.name}</p>
                         <button className='toggle-button' onClick={() => setProjectDetails(prev => ({ ...prev, [option.context]: !prev[option.context] }))} >
-                            <div className='thumb' style={{ left: projectDetails[option.context] ? 'calc(100% - 2rem)' : '0' }}></div>
+                            <div className='thumb' style={{ left: projectDetails[option.context] ? 'calc(100% - 2rem)' : '-1px', background: projectDetails[option.context] ? "var(--accent1)" : "var(--bgDark)" }}></div>
                         </button>
                     </li>
 
@@ -107,7 +107,7 @@ const Settings = () => {
                     <div className="total-filament-container">
                         <p>Total Filament</p>
                         <div className="filament-input-container">
-                            <input className='filament-input' type="number" value={filamentWeight} onChange={(e) => setFilamentWeight(e.target.value)} />
+                            <input className='filament-input' type="number" placeholder='0' value={filamentWeight} onChange={(e) => setFilamentWeight(e.target.value)} />
                         </div>
                     </div>
 
@@ -118,11 +118,11 @@ const Settings = () => {
 
                     <div className="total-printing-time-input-container">
                         <div className="total-printing-time-input-div">
-                            <input className='printing-time-input' type="number" value={printingHour} onChange={(e) => setPrintingHour(e.target.value)} />
+                            <input className='printing-time-input' type="number" placeholder='0' value={printingHour} onChange={(e) => setPrintingHour(e.target.value)} />
                             <p>h</p>
                         </div>
                         <div className="total-printing-time-input-div">
-                            <input className='printing-time-input' type="number" value={printingMinute} onChange={(e) => setPrintingMinute(e.target.value)} />
+                            <input className='printing-time-input' type="number" placeholder='0' value={printingMinute} onChange={(e) => setPrintingMinute(e.target.value)} />
                             <p>m</p>
                         </div>
                     </div>
