@@ -9,9 +9,9 @@ const PriceCalculator = () => {
         let totalCost = 0;
 
         // Add base price for each service
-        if (projectDetails.modelEditing) basePrice += 100;
+        if (projectDetails.modelEditing) basePrice += 200;
         if (projectDetails.stlConversion) basePrice += 50;
-        if (projectDetails.modelCut) basePrice += 50;
+        if (projectDetails.modelCut) basePrice += 100;
         if (projectDetails.connectionProfileDesign) basePrice += 200;
         if (projectDetails.multiColor) basePrice += 100;
         if (projectDetails.customFilamentPurchase) totalCost += 800;
@@ -26,14 +26,14 @@ const PriceCalculator = () => {
         // Calculate printing time cost (assuming 1 hour = 30₺)
         let printingTimeCost = 0;
         if (projectDetails.totalPrintingTime && projectDetails.totalPrintingTime !== '') {
-            printingTimeCost = (Number(projectDetails.totalPrintingTime) / 60) * 30;
+            printingTimeCost = (Number(projectDetails.totalPrintingTime) / 60) * 50;
         }
 
         // Calculate total cost
         totalCost += Math.ceil(filamentCost + printingTimeCost);
 
         // Calculate profit (assuming 30% profit margin)
-        const profit = Math.ceil(totalCost * 0.3 + basePrice);
+        const profit = Math.ceil(totalCost * 0.4 + basePrice);
 
         setProjectDetails(prev => ({
             ...prev,
